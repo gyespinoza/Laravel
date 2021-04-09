@@ -66,6 +66,8 @@ class PetController extends Controller
     public function edit($id)
     {
         //
+        $pet=PET::findOrFail($id);
+        return view('pet.edit', compact('pet')); //pasar la informacion hacia la vista
     }
 
     /**
@@ -78,6 +80,10 @@ class PetController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $petData=request()->except(['_token', '_method']);
+        Pet::where('id', '=', $id)->update($petData);
+
+        return redirect('pet');
     }
 
     /**
@@ -89,5 +95,7 @@ class PetController extends Controller
     public function destroy($id)
     {
         //
+        Pet::destroy($id);
+        return redirect('pet');
     }
 }
