@@ -15,6 +15,7 @@
             
                 <!--se incluyen los componentes de vue-->
                 <encabezado></encabezado>
+                <categories-list></categories-list>
        </div>
        <script src="{{ asset('js/app.js') }}"></script>
     </body>
